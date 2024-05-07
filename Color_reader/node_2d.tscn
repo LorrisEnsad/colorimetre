@@ -1,0 +1,77 @@
+[gd_scene load_steps=3 format=3 uid="uid://c16uy240buun6"]
+
+[ext_resource type="Script" path="res://Node2D.gd" id="1_nodtd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_80uc3"]
+font_size = 25
+font_color = Color(0.741176, 0.741176, 0.741176, 1)
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Node2D" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nodtd")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Tables_mesures" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Couleur_preview" type="ColorRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Couleur_label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Couleur_preview"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 25.0
+offset_top = 10.0
+offset_right = 104.0
+offset_bottom = 187.0
+text = "IMPORTER UN FICHIER"
+label_settings = SubResource("LabelSettings_80uc3")
+
+[node name="Importer" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "IMPORTER"
+
+[node name="FileDialog" type="FileDialog" parent="."]
+title = "Open a File"
+ok_button_text = "Ouvrir"
+file_mode = 0
+access = 2
+use_native_dialog = true
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Importer" to="." method="_on_button_pressed"]
+[connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]

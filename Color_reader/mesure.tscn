@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=3 uid="uid://c134hfxjh57w2"]
+
+[ext_resource type="Script" path="res://Mesure.gd" id="1_8wy24"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_frgfr"]
+font_size = 18
+font_color = Color(0, 0, 0, 1)
+outline_size = 2
+
+[node name="Mesure" type="Control"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+script = ExtResource("1_8wy24")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(30, 50)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/ColorRect"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 1
+text = "IF iondozienfoizenfeofn"
+label_settings = SubResource("LabelSettings_frgfr")
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="HBoxContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+
+[connection signal="pressed" from="HBoxContainer/ColorRect/Button" to="." method="_on_button_pressed"]
